@@ -1,10 +1,13 @@
 import React from 'react';
-import { SideNav } from '../Components/index';
+import { SideNav,CreatePost,Header, RightNav } from '../Components/index';
 
 export const Home = () => {
   return (
     <div>
+      <Header />
       <SideNav />
+      <CreatePost />
+      <RightNav />
     </div>
   )
 }
