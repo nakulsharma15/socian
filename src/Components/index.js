@@ -1,11 +1,11 @@
 import { SideNav } from "./SideNav";
 import CreatePost from "./CreatePost";
 import Header from "./Header";
-import { RightNav } from "./RightNav";
+import { SuggestionBar } from "./SuggestionBar";
 
 export {
     SideNav,
     CreatePost,
     Header,
-    RightNav
+    SuggestionBar
 }

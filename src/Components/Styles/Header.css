@@ -1,12 +1,12 @@
 .header {
     position: sticky;
     top: 0px;
-    background-color: var(--aside-bg-color);
+    border-bottom: 1px solid var(--line-color);
+    background-color: var(--primary-bg-color);
 }
 
 .header-logo {
     padding: 1rem;
-    background-color: var(--aside-bg-color);
 }
 
 .header-logo-img {

@@ -1,0 +1,79 @@
+.suggestion-bar {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 4.65rem;
+    right: 0;
+    left: auto;
+    border-left: 1px solid var(--line-color);
+    overflow-y: auto;
+}
+
+.suggestion-heading {
+    padding: 1rem 0rem 1rem 1rem;
+    margin-bottom: 1rem;
+    /* border-bottom: 1px solid var(--line-color); */
+}
+
+.suggestion-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+
+.suggested-user-div {
+    padding: 0.8rem 0rem;
+}
+
+.suggested-user-img {
+    max-width: 3.5rem;
+    padding-right: 0.5rem;
+}
+
+.suggested-user-img img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    border-radius: 50%;
+}
+
+.suggested-user-info-div {
+    padding-left: 0.5rem;
+}
+
+.suggested-user-name {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.suggested-user-username {
+    color: var(--username-color);
+}
+
+.suggest-follow-btn {
+    padding: 0.25rem 1rem;
+    border-radius: 2.5rem;
+    font-weight: 450;
+}
+
+.suggestion-div:hover {
+    background-color: var(--aside-bg-color);
+    cursor: pointer;
+}
+
+.suggest-follow-btn:hover {
+    color: var(--blue-500);
+}
+
+@media only screen and (max-width: 768px) {
+
+    .suggestion-bar {
+        display: none;
+    }
+
+}

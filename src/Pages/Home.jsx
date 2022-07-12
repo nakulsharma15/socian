@@ -1,13 +1,24 @@
 import React from 'react';
-import { SideNav,CreatePost,Header, RightNav } from '../Components/index';
+import "./Styles/Styles.css";
+import { SideNav, CreatePost, Header, SuggestionBar } from '../Components/index';
 
 export const Home = () => {
   return (
     <div>
       <Header />
-      <SideNav />
-      <CreatePost />
-      <RightNav />
+      <div className="page-content">
+
+        <SideNav />
+
+        <div className="main-content">
+          <CreatePost />
+
+        </div>
+
+        <SuggestionBar />
+
+      </div>
+
     </div>
   )
 }
