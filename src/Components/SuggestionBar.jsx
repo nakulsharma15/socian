@@ -24,8 +24,9 @@ export const SuggestionBar = () => {
 
                 </div>
                 <button className='suggest-follow-btn'> Follow</button>
+                
             </div>)}
-
+         
            
         </div>
     )

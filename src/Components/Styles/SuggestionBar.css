@@ -68,12 +68,17 @@
 
 .suggest-follow-btn:hover {
     color: var(--blue-500);
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1100px) {
 
     .suggestion-bar {
         display: none;
     }
 
+}
+
+.suggestion-bar::-webkit-scrollbar {
+    display: none;
 }

@@ -3,12 +3,18 @@ import "./Styles/CreatePost.css";
 
 export default function CreatePost() {
 
-  const url = "https://ik.imagekit.io/avavya/Sonder/piyush_eating_q6saDRQSv.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1654362769580";
+  const url = "https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877";
 
   return (
-    <div className='createpost-div'>
-      <div className="suggested-user-img">
-        <img src={url} alt="pp-logo" />
+    <div>
+      <div className='createpost-div'>
+        <div className="suggested-user-img">
+          <img src={url} alt="pp-logo" />
+        </div>
+        <textarea className='createpost-textarea' placeholder="What's happening?"></textarea>
+      </div>
+      <div className='post-btn-div'>
+        <button className='post-btn'>Post</button>
       </div>
     </div>
   )

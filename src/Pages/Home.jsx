@@ -11,6 +11,9 @@ export const Home = () => {
         <SideNav />
 
         <div className="main-content">
+
+          <h2 className='home-heading'>Home</h2>
+          
           <CreatePost />
 
         </div>
