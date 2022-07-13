@@ -16,6 +16,7 @@
     align-items: center;
     gap: 5rem;
     padding: 2rem;
+    overflow-x: hidden;
 }
 
 .auth-page-brand-div {
