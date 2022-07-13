@@ -8,7 +8,7 @@ export default function Header() {
             <div className="header-logo flex-align-center">
 
                 <div className="header-logo-img">
-                    <img src="https://res.cloudinary.com/nakulsharma15/image/upload/v1651218268/Assets/0_hfnhg9.png" alt="pp-logo" />
+                    <img src="https://res.cloudinary.com/nakulsharma15/image/upload/v1657730491/Assets/02012019-20-removebg-preview_gqjanh_dtas4n.png" alt="pp-logo" />
                 </div>
                 <h1 className="text-xl logo-text">Socian</h1>
 
