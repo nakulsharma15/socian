@@ -1,7 +1,21 @@
-import "./Styles/Header.css"
-import React from 'react'
+import "./Styles/Header.css";
+import React from 'react';
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../Redux/slices/authSlice";
 
 export default function Header() {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logoutHandler = () => {
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userData");
+        dispatch(logout());
+        navigate("/login", {replace: true})
+    }
+
     return (
         <div className="header flex-sb">
 
@@ -14,7 +28,7 @@ export default function Header() {
 
             </div>
 
-            <button className="btn primary-btn flex-sb logout-btn"><span className="material-icons-outlined">logout</span>Logout</button>
+            <button className="btn primary-btn flex-sb logout-btn" onClick={logoutHandler}><span className="material-icons-outlined">logout</span>Logout</button>
         </div>
     )
 }
