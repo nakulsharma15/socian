@@ -10,6 +10,7 @@ const signupUser = createAsyncThunk("auth/signupUser",
             toast.success("You're successfully logged in.", { style: toastStyle });
             return res.data;
         } catch (err) {
+            console.log(err);
             return rejectWithValue(err.response.data)
         }
     })
