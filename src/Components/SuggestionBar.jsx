@@ -11,7 +11,7 @@ export const SuggestionBar = () => {
 
             <h2 className='suggestion-heading'>Suggested for you</h2>
 
-            {users.map((user) =>  <div className='suggestion-div'>
+            {users.map((user) =>  <div className='suggestion-div' key={user.imageurl}>
                 <div className="suggested-user-div flex-align-center">
 
                     <div className="suggested-user-img">

@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
 import "./Styles/LoginForm.css";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../utils/handleAuth";
@@ -9,7 +11,7 @@ export default function LoginForm() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { authToken, authStatus } = useSelector((state) => state.auth);
+    const { authToken } = useSelector((state) => state.auth);
 
     const testCredentials = {
         username: "coldpigli",
@@ -19,6 +21,23 @@ export default function LoginForm() {
     const loginWithTest = () => {
         dispatch(loginUser(testCredentials));
     }
+
+    const formik = useFormik({
+        initialValues: {
+            username: "",
+            password: ""
+        },
+        validationSchema: Yup.object({
+            username: Yup.string().required("Username cannot be empty").min(5, "Username must be 5 characters long"),
+            password: Yup.string().required("Password cannot be empty")
+        }),
+        onSubmit: (values, actions) => {
+            const { username, password } = values;
+            dispatch(loginUser({ username, password }))
+            actions.resetForm();
+        },
+    },
+    );
 
     useEffect(() => {
         if (authToken) {
@@ -37,14 +56,18 @@ export default function LoginForm() {
 
             <div className="form-div-parent">
 
-                <form >
+                <form onSubmit={formik.handleSubmit}>
 
                     <div className={"form-div email-div"}>
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="username">Username</label>
 
-                        <div>
-                            <input type="email" placeholder="Enter Email" name="email" />
+                        <div className={(formik.touched.username && formik.errors.username) && "form-error"}>
+                            <input type="text" placeholder="Enter Username" name="username" {...formik.getFieldProps("username")} />
                         </div>
+
+                        {
+                            (formik.touched.username && formik.errors.username) && <p className="error-message">{formik.errors.username}</p>
+                        }
 
                     </div>
 
@@ -52,9 +75,13 @@ export default function LoginForm() {
 
                         <label htmlFor="password">Password</label>
 
-                        <div>
-                            <input type="password" placeholder="Enter Password" name="password" />
+                        <div className={(formik.touched.password && formik.errors.password) && "form-error"}>
+                            <input type="password" placeholder="Enter Password" name="password" {...formik.getFieldProps("password")} />
                         </div>
+
+                        {
+                            (formik.touched.password && formik.errors.password) && <p className="error-message">{formik.errors.password}</p>
+                        }
 
                     </div>
 
