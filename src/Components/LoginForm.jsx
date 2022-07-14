@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
 import "./Styles/LoginForm.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "../utils/handleAuth";
 
 export default function LoginForm() {
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { authToken, authStatus } = useSelector((state) => state.auth);
+
+    const testCredentials = {
+        username: "coldpigli",
+        password: "Piyush@123"
+    }
+
+    const loginWithTest = () => {
+        dispatch(loginUser(testCredentials));
+    }
+
+    useEffect(() => {
+        if (authToken) {
+            navigate("/", { replace: true });
+        }
+    }, [authToken])
+
 
     return (
 
@@ -34,7 +58,7 @@ export default function LoginForm() {
 
                     </div>
 
-                    <p className="action-txt">Login using guest credentials</p>
+                    <p className="action-txt" onClick={loginWithTest}>Login using guest credentials</p>
 
 
                     <div className="form-action-div">
