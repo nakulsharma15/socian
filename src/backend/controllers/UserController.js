@@ -131,7 +131,7 @@ export const bookmarkPostHandler = function (schema, request) {
         { errors: ["This Post is already bookmarked"] }
       );
     }
-    user.bookmarks.push(post._id);
+    user.bookmarks.push(post);
     this.db.users.update(
       { _id: user._id },
       { ...user, updatedAt: formatDate() }
@@ -169,13 +169,13 @@ export const removePostFromBookmarkHandler = function (schema, request) {
       );
     }
     const isBookmarked = user.bookmarks.some(
-      (currPost) => currPost === postId
+      (currPost) => currPost._id === postId
     );
     if (!isBookmarked) {
       return new Response(400, {}, { errors: ["Post not bookmarked yet"] });
     }
     const filteredBookmarks = user.bookmarks.filter(
-      (currPost) => currPost !== postId
+      (currPost) => currPost._id !== postId
     );
     user = { ...user, bookmarks: filteredBookmarks };
     this.db.users.update(
@@ -216,7 +216,7 @@ export const followUserHandler = function (schema, request) {
       );
     }
     const isFollowing = user.following.some(
-      (currUser) => currUser.username === followUser.username
+      (currUser) => currUser._id === followUser._id
     );
 
     if (isFollowing) {
@@ -254,6 +254,7 @@ export const followUserHandler = function (schema, request) {
     );
   }
 };
+
 /**
  * This handler handles unfollow action.
  * send POST Request at /api/users/unfollow/:followUserId/
@@ -276,7 +277,7 @@ export const unfollowUserHandler = function (schema, request) {
       );
     }
     const isFollowing = user.following.some(
-      (currUser) => currUser.username === followUser.username
+      (currUser) => currUser._id === followUser._id
     );
 
     if (!isFollowing) {
@@ -286,13 +287,13 @@ export const unfollowUserHandler = function (schema, request) {
     const updatedUser = {
       ...user,
       following: user.following.filter(
-        (currUser) => currUser.username !== followUser.username
+        (currUser) => currUser._id !== followUser._id
       ),
     };
     const updatedFollowUser = {
       ...followUser,
       followers: followUser.followers.filter(
-        (currUser) => currUser.username !== user.username
+        (currUser) => currUser._id !== user._id
       ),
     };
     this.db.users.update(
