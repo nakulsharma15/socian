@@ -31,7 +31,7 @@ export const users = [
       {
         firstName: "Nakul",
         lastName: "Sharma",
-        username: "bhratashree",
+        username: "nakulsharma15",
         email: "nakul@gmail.com",
         profileImg:
           "https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877",

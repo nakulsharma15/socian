@@ -1,8 +1,14 @@
 import React from 'react';
 import "./Styles/Styles.css";
-import { SideNav, CreatePost, Header, SuggestionBar,ProfileComponent } from '../Components/index';
+import { SideNav, Header, SuggestionBar,ProfileComponent } from '../Components/index';
+
+import { useSelector } from "react-redux";
 
 export const Profile = () => {
+
+  const {userData} = useSelector((store) => store.auth);
+ console.log(userData);
+
   return (
     <div>
 
@@ -13,7 +19,7 @@ export const Profile = () => {
 
         <div className="main-content">
 
-          <ProfileComponent />
+          <ProfileComponent userData={userData}/>
 
         </div>
 

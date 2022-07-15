@@ -1,7 +1,7 @@
 import "./Styles/ProfileComponent.css";
 import { Link } from "react-router-dom";
 
-export default function ProfileComponent() {
+export default function ProfileComponent({userData}) {
 
     return (
         <div>
@@ -16,7 +16,7 @@ export default function ProfileComponent() {
                 </div>
 
                 <div className="profile-img">
-                    <img src="https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877" alt="pp-logo" />
+                    <img src={userData.profileImg} alt={userData.firstName} />
                 </div>
             </div>
 
@@ -29,17 +29,17 @@ export default function ProfileComponent() {
 
             <div className="profile-name-div">
 
-                <p className="profile-name">Nakul Sharma</p>
+                <p className="profile-name">{userData.firstName + userData.lastName}</p>
 
-                <p className="profile-username">@NakulSharma_15</p>
+                <p className="profile-username">@{userData.username}</p>
 
             </div>
 
             <div className="profile-bio-div">
 
-                <p className="profile-bio">'Hooked' on react lately, flirting with Javascript simultaneously. Following NeoGcamp religiously. Loves dad jokes, music and quiet water bodies</p>
+                <p className="profile-bio">{userData.bio}</p>
 
-                <Link to="https://peerlist.io/nakulsharma" className="portfolio-url">https://peerlist.io/nakulsharma</Link>
+                <Link to={userData.portfolioUrl} className="portfolio-url">{userData.portfolioUrl}</Link>
 
             </div>
 
