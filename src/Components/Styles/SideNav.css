@@ -1,4 +1,5 @@
 .sidenav-menu {
+    background-color: var(--primary-bg-color);
     display: flex;
     flex-direction: column;
     width: 15rem;
