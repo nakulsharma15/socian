@@ -1,7 +1,7 @@
 import "./Styles/ProfileComponent.css";
 import { Link } from "react-router-dom";
 
-export default function ProfileComponent({userData}) {
+export default function ProfileComponent({ userData }) {
 
     return (
         <div>
@@ -64,6 +64,22 @@ export default function ProfileComponent({userData}) {
                     <p className="profile-stat-num">10</p>
                     <p className="profile-stat-type">Posts</p>
 
+                </div>
+
+            </div>
+
+            <div className="profile-navigation-div">
+
+                <div className="profile-navigation-menu">
+                    <p>Posts</p>
+                </div>
+
+                <div className="profile-navigation-menu">
+                    <p>Followers</p>
+                </div>
+
+                <div className="profile-navigation-menu">
+                    <p>Following</p>
                 </div>
 
             </div>
