@@ -7,8 +7,8 @@ function RoutePaths() {
     return <Routes>
         <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
         <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-        <Route path="/login" element={<RequireAuth><Login /></RequireAuth>} />
-        <Route path="/signup" element={<RequireAuth><Signup /></RequireAuth>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/bookmarks" element={<RequireAuth><BookmarksPage /></RequireAuth>} />
         <Route path="/mockman" element={<MockMan/>}/>
     </Routes>

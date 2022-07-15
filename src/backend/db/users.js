@@ -179,7 +179,7 @@ export const users = [
     _id: uuid(),
     firstName: "Nakul",
     lastName: "Sharma",
-    username: "bhratashree",
+    username: "nakulsharma15",
     email: "nakul@gmail.com",
     password: "Nakul@123",
     profileImg:
