@@ -31,7 +31,7 @@ export const users = [
       {
         firstName: "Nakul",
         lastName: "Sharma",
-        username: "nakulsharma15",
+        username: "bhratashree",
         email: "nakul@gmail.com",
         profileImg:
           "https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877",
@@ -179,7 +179,7 @@ export const users = [
     _id: uuid(),
     firstName: "Nakul",
     lastName: "Sharma",
-    username: "nakulsharma15",
+    username: "bhratashree",
     email: "nakul@gmail.com",
     password: "Nakul@123",
     profileImg:
