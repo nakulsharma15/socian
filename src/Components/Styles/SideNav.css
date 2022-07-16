@@ -1,11 +1,12 @@
 .sidenav-menu {
+    background-color: var(--primary-bg-color);
     display: flex;
     flex-direction: column;
     width: 15rem;
     height: 100%;
     position: fixed;
     z-index: 1;
-    top: 4.65rem;
+    top: 4.85rem;
     left: 0;
     border-right: 1px solid var(--line-color);
 }
