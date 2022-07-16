@@ -11,7 +11,7 @@ export const Profile = () => {
   return (
     <div>
 
-      <EditProfileModal />
+      {/* <EditProfileModal /> */}
 
       <Header />
       <div className="page-content">
