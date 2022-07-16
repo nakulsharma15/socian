@@ -47,21 +47,21 @@ export default function ProfileComponent({ userData }) {
 
                 <div className="profile-stat">
 
-                    <p className="profile-stat-num">5</p>
+                    <p className="profile-stat-num">{userData?.followers?.length}</p>
                     <p className="profile-stat-type">Followers</p>
 
                 </div>
 
                 <div className="profile-stat">
 
-                    <p className="profile-stat-num">10</p>
+                    <p className="profile-stat-num">{userData?.following?.length}</p>
                     <p className="profile-stat-type">Following</p>
 
                 </div>
 
                 <div className="profile-stat">
 
-                    <p className="profile-stat-num">10</p>
+                    <p className="profile-stat-num">1</p>
                     <p className="profile-stat-type">Posts</p>
 
                 </div>
