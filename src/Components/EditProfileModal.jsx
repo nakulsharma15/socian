@@ -66,6 +66,10 @@ export default function EditProfileModal() {
                                         <input type="text" placeholder="Enter Username" name="lastName" {...formik.getFieldProps("lastName")} />
                                     </div>
 
+                                    {
+                                        (formik.touched.lastName && formik.errors.lastName) && <p className="error-message">{formik.errors.lastName}</p>
+                                    }
+
                                 </div>
 
                                 <div className="edit-profile-div email-div">
