@@ -1,0 +1,137 @@
+.modal-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    backdrop-filter: blur(1px);
+}
+
+.modal-centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal {
+    min-width: 38rem;
+    min-height: 32.5rem;
+    background-color: var(--primary-bg-color);
+    border-radius: 0.25rem;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+}
+
+.modal-header {
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding-top: 0.75rem;
+}
+
+.playlist-container {
+    padding: 0.75rem;
+    font-size: 14px;
+    margin: 0.25rem 0.5rem;
+    height: 12rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    overflow-y: scroll;
+}
+
+.playlist-item-div {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-bg-color);
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    gap: 1rem;
+   
+}
+
+.playlist-item-div:hover {
+    cursor: pointer;
+}
+
+.playlist-check {
+    color: var(--submit-btn-color);
+}
+
+.playlist-uncheck {
+    color: var(--white);
+}
+
+.playlist-check:hover {
+    cursor: pointer;
+}
+
+.playlist-input {
+    margin: 0.25rem 0.5rem;
+    padding: 0.25rem;
+    margin-bottom: 0rem;
+}
+
+.playlist-input input {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    padding-bottom: 0.25rem;
+    border-radius: 0.25rem;
+    caret-color: var(--submit-btn-color);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: var(--white);
+    border-color: transparent;
+    border-radius: 8px;
+}
+
+.modal-error-message {
+    margin-left: 1rem;
+}
+
+.playlist-input input:focus {
+    outline: none;
+    border: 2px solid var(--submit-btn-color);
+}
+
+.modal-actions {
+    /* border: 1px solid blue; */
+    width: 100%;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.actions-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.close-modal-txt {
+    color: var(--red-500);
+}
+
+.close-modal-txt:hover {
+    color: var(--red-600);
+}
+
+.playlist-container::-webkit-scrollbar {
+    width: 0.5vw;
+}
+
+.playlist-container::-webkit-scrollbar-thumb {
+    background-color: var(--tick-color);
+    border-radius: 15rem;
+}
+
+.playlist-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-hover-color);
+}
+
+.playlist-container::-webkit-scrollbar-track {
+    background-color: var(--primary-bg-color);
+}
