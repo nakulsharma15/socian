@@ -3,6 +3,7 @@ import { Profile } from "./Profile";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 import { BookmarksPage } from "./BookmarksPage";
+import Explore from "./Explore";
 import MockMan from "./Mockman";
 
 export {
@@ -11,5 +12,6 @@ export {
     Login,
     Signup,
     BookmarksPage,
-    MockMan
+    MockMan,
+    Explore
 };

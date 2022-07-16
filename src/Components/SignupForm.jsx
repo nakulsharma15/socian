@@ -84,7 +84,7 @@ export default function SignupForm() {
 
                     </div>
 
-                    <div className={"form-div email-div"}>
+                    <div className="form-input-div">
                         <label htmlFor="username">Username</label>
 
                         <div className={(formik.touched.username && formik.errors.username) && "form-error"}>

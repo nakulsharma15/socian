@@ -11,24 +11,19 @@ export const SideNav = () => {
                 <p>Home</p>
             </NavLink>
 
-            <NavLink to="/playlist" className="menu-item">
-                <span className="material-symbols-outlined">playlist_add</span>
-                <p>Playlists</p>
+            <NavLink to="/explore" className="menu-item">
+            <span className="material-icons-outlined">explore</span>
+                <p>Explore</p>
             </NavLink>
 
-            <NavLink to="/liked" className="menu-item">
-                <span className="material-symbols-outlined">thumb_up</span>
-                <p>Liked videos</p>
+            <NavLink to="/bookmarks" className="menu-item">
+            <span className="material-icons-outlined">bookmark_border</span>
+                <p>Bookmarks</p>
             </NavLink>
 
-            <NavLink to="/watchlater" className="menu-item">
-                <span className="material-symbols-outlined">schedule</span>
-                <p>Watch Later</p>
-            </NavLink>
-
-            <NavLink to="/history" className="menu-item">
-                <span className="material-symbols-outlined">history</span>
-                <p>History</p>
+            <NavLink to="/profile" className="menu-item">
+            <span className="material-icons-outlined">person</span>
+                <p>Profile</p>
             </NavLink>
 
         </div>
