@@ -1,15 +1,16 @@
 import React from 'react';
 import "./Styles/CreatePost.css";
+import { useSelector } from 'react-redux';
 
 export default function CreatePost() {
 
-  const url = "https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877";
+  const {userData} = useSelector((store) => store.auth);
 
   return (
     <div>
       <div className='createpost-div'>
         <div className="suggested-user-img">
-          <img src={url} alt="pp-logo" />
+          <img src={userData?.profileImg} alt={userData?.username} />
         </div>
         <textarea className='createpost-textarea' placeholder="What's happening?"></textarea>
       </div>

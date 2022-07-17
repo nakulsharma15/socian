@@ -11,8 +11,6 @@ export const Home = () => {
   const dispatch = useDispatch();
   const { postList } = useSelector((store) => store.posts);
 
-  console.log(postList);
-
   useEffect(() => {
     dispatch(getAllUsers());
     if (postList.length === 0) {
@@ -30,10 +28,10 @@ export const Home = () => {
         <div className="main-content">
 
           <h2 className='home-heading'>Home</h2>
-          
+
           <CreatePost />
 
-          {postList?.map((post) => <PostCard post={post} key={post._id}/>)}
+          {postList?.map((post) => <PostCard post={post} key={post._id} />)}
 
         </div>
 
