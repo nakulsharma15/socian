@@ -22,6 +22,22 @@ export const Profile = () => {
 
           <ProfileComponent userData={userData} />
 
+          <div className="profile-navigation-div">
+
+            <div className="profile-navigation-menu">
+              <p>Posts</p>
+            </div>
+
+            <div className="profile-navigation-menu">
+              <p>Followers</p>
+            </div>
+
+            <div className="profile-navigation-menu">
+              <p>Following</p>
+            </div>
+
+          </div>
+
           <PostCard />
 
         </div>
