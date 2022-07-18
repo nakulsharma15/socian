@@ -4,7 +4,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from 'react-redux';
 import { closeEditProfileModal } from '../Redux/slices/modalSlice';
-import {useEffect} from "react";
+import { useEffect } from "react";
+import { toast } from "react-hot-toast";
+import toastStyle from '../utils/toastStyle';
 import { editUser } from '../utils/userHandler';
 
 export default function EditProfileModal() {
@@ -14,6 +16,31 @@ export default function EditProfileModal() {
     const dispatch = useDispatch();
 
     const { firstName, lastName, profileImg, portfolioUrl, bio } = userData;
+    const uploadImage = async (image) => {
+        if (Math.round(image.size / 1024000) > 2) {
+            toast.error("Image size cannot exceed 2MB!", { style: toastStyle });
+        }
+        else {
+            const data = new FormData();
+            data.append("file", image);
+            data.append("upload_preset", process.env.REACT_APP_CLOUDINARY_API_KEY);
+            const requestOptions = {
+                method: "POST",
+                body: data,
+            };
+            await fetch(
+                "https://api.cloudinary.com/v1_1/nakulsharma15/image/upload",
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((json) => {
+                    dispatch(editUser({ profileImg: json.url }));
+                })
+                .catch((error) => {
+                    toast.error("Something went wrong. Please try again later", { style: toastStyle });
+                });
+        }
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -29,8 +56,8 @@ export default function EditProfileModal() {
         }),
         onSubmit: (values, actions) => {
             dispatch(closeEditProfileModal());
-            const { firstName, lastName, portfolioUrl, bio } = values;   
-            dispatch(editUser({firstName, lastName, portfolioUrl, bio}));
+            const { firstName, lastName, portfolioUrl, bio } = values;
+            dispatch(editUser({ firstName, lastName, portfolioUrl, bio }));
             actions.resetForm();
         },
     },
@@ -50,6 +77,21 @@ export default function EditProfileModal() {
                         </div>
 
                         <div className="edit-profile-div-parent">
+
+                            <div className='edit-profile-img-div'>
+
+                                <div className="edit-profile-logo-img">
+                                    <img src={userData.profileImg} alt="pp-logo" />
+                                </div>
+
+                                <input type="file"
+                                    visibility="hidden"
+                                    accept="image/*"
+                                    onChange={(e) => uploadImage(e.target.files[0])} />
+
+
+                            </div>
+
 
                             <form onSubmit={formik.handleSubmit}>
 
