@@ -14,7 +14,7 @@ export const Home = () => {
 
   const relevantPosts = postList?.filter((post) => {
     const temp = userData.following.find((follower) => follower.username === post.username);
-    if(temp)
+    if(temp || post.username === userData.username)
     return post;
   });
 

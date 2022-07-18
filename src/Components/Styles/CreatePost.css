@@ -1,6 +1,11 @@
 .createpost-div {
-    margin: 1rem 1rem 0rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;
     display: flex;
+}
+.line-div {
+
+    border-bottom: 1px solid var(--line-color);
+
 }
 
 .createpost-textarea {
@@ -15,20 +20,16 @@
     margin-top: 0px;
 }
 
+.createpost-area-div {
+    width: 100%;
+}
+
 .createpost-textarea::placeholder {
     color: var(--username-color);
 }
 
 .createpost-textarea:focus {
     border-color: var(--tick-color);
-}
-
-.post-btn-div {
-    display: flex;
-    margin-top: 1rem;
-    padding-bottom: 1rem;
-    justify-content: flex-end;
-    border-bottom: 1px solid var(--line-color);
 }
 
 .post-btn {
@@ -39,7 +40,7 @@
     background-color: rgb(29, 155, 240);
     color: var(--white);
     border: 1px solid transparent;
-    margin-left: auto;
+
 }
 
 .post-btn:hover {

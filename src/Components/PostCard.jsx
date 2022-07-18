@@ -2,6 +2,7 @@ import "./Styles/PostCard.css";
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getTimeDifference } from "../utils/utilFunctions";
+import { deletePost } from "../utils/postHandler";
 
 export default function PostCard({ post }) {
 
@@ -9,14 +10,12 @@ export default function PostCard({ post }) {
     const likedByList = post?.likes?.likedBy || [];
     const { userData } = useSelector((store) => store.auth);
     const { userList } = useSelector((store) => store.users);
-    const currentUser = userData.username;
     const dispatch = useDispatch();
 
     const findPostCreator = (name) => {
         const user = userList?.find((user) => user.username === name);
         return user;
     };
-
 
     return (
         <div className='postcard-div'>
@@ -60,16 +59,16 @@ export default function PostCard({ post }) {
                     <span className="material-icons-outlined">bookmark_border</span>
                 </div>
 
-                {post?.username === currentUser.username ?
+                {post?.username === userData.username ?
                     <div className="postcard-action">
                         <span className="material-icons-outlined">edit</span>
                     </div>
                     : null}
 
 
-                {post?.username === currentUser.username ?
+                {post?.username === userData.username ?
                     <div className="postcard-action">
-                        <span className="material-icons-outlined">delete</span>
+                        <span className="material-icons-outlined" onClick={() => dispatch(deletePost(post))}>delete</span>
                     </div>
                     : null}
 
