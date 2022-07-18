@@ -10,6 +10,13 @@ export const Home = () => {
 
   const dispatch = useDispatch();
   const { postList } = useSelector((store) => store.posts);
+  const {userData} = useSelector((store) => store.auth)
+
+  const relevantPosts = postList?.filter((post) => {
+    const temp = userData.following.find((follower) => follower.username === post.username);
+    if(temp)
+    return post;
+  });
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -31,7 +38,7 @@ export const Home = () => {
 
           <CreatePost />
 
-          {postList?.map((post) => <PostCard post={post} key={post._id} />)}
+          {relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)}
 
         </div>
 
