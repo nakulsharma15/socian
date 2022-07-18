@@ -11,13 +11,11 @@ export const Profile = () => {
   const { userData } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const { postList } = useSelector((store) => store.posts);
-  const relevantPosts = postList?.filter((post) => {
-    const temp = userData.following.find((follower) => follower.username === post.username);
-    if(temp)
-    return post;
-  });
-  console.log(postList);
-  console.log(relevantPosts);
+  const relevantPosts = postList?.filter((post)=>post.username===userData.username);
+
+  const checkIfAlreadyFollowed = (currentUsername) => {
+    return userData?.following.find((item) => item.username === currentUsername)
+  }
 
   useEffect(() => {
     if (postList.length === 0) {
@@ -27,17 +25,14 @@ export const Profile = () => {
 
   const profileFollowHandler = () => {
     setProfileFollowData(userData.followers);
-    setActiveFeed("followers");
   }
 
   const profileFollowingHandler = () => {
     setProfileFollowData(userData.following);
-    setActiveFeed("following");
   }
 
   const profileFeedHandler = () => {
     setProfileFollowData([]);
-    setActiveFeed("posts");
   }
 
   return (
@@ -57,7 +52,7 @@ export const Profile = () => {
 
           <div className="profile-navigation-div">
 
-            <div className= "profile-navigation-menu" onClick={profileFeedHandler}>
+            <div className="profile-navigation-menu" onClick={profileFeedHandler}>
               <p>Posts</p>
             </div>
 
@@ -71,22 +66,23 @@ export const Profile = () => {
 
           </div>
 
-          {profileFollowData.length === 0 ? (relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)) : 
-                      profileFollowData?.map((user) => <div className='suggestion-div' key={user._id}>
-                      <div className="suggested-user-div flex-align-center">
-      
-                          <div className="suggested-user-img">
-                              <img src={user.profileImg} alt={user.username} />
-                          </div>
-                          <div className='suggested-user-info-div'>
-                              <p className='suggested-user-name'>{user.firstName + " " + user.lastName}</p>
-                              <p className="suggested-user-username">@{user.username}</p>
-                          </div>
-      
-                      </div>
-                      <button className='suggest-follow-btn'> Follow</button>
-      
-                  </div>)
+          {profileFollowData.length === 0 ? (relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)) :
+
+            profileFollowData?.map((user) => <div className='suggestion-div' key={user.username}>
+              <div className="suggested-user-div flex-align-center">
+
+                <div className="suggested-user-img">
+                  <img src={user.profileImg} alt={user.username} />
+                </div>
+                <div className='suggested-user-info-div'>
+                  <p className='suggested-user-name'>{user.firstName + " " + user.lastName}</p>
+                  <p className="suggested-user-username">@{user.username}</p>
+                </div>
+
+              </div>
+              <button className='suggest-follow-btn'>{checkIfAlreadyFollowed(user.username) ? "Unfollow" : "Follow"}</button>
+
+            </div>)
           }
 
         </div>
