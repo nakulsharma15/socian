@@ -1,11 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-hot-toast";
+import toastStyle from "./toastStyle";
 
 const editUser = createAsyncThunk("user/editUser",
 async (userData, {getState,rejectWithValue})=>{
     try{
         const {authToken} = getState().auth;
         const res = await axios.post('/api/users/edit',{userData},{headers: {authorization: authToken}});
+        toast.success("Profile updated successfully!", { style: toastStyle });
         return res.data;
     }catch(err){
         console.log(err);

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser,signupUser } from "../../utils/handleAuth";
+import { loginUser, signupUser } from "../../utils/handleAuth";
+import { editUser } from "../../utils/userHandler";
 
 const initialState = {
     authToken: "" || JSON.parse(localStorage.getItem("authToken")),
@@ -49,6 +50,18 @@ const authSlice = createSlice({
         [loginUser.rejected]: (state) => {
             console.log("Error Occured")
             state.authStatus = 'failed'
+        },
+        [editUser.pending]: (state) => {
+            state.authStatus = 'loading'
+        },
+        [editUser.fulfilled]: (state, action) => {
+            console.log('askdnaskld', action);
+            state.userData = action.payload.user;
+            localStorage.setItem("userData", JSON.stringify(action.payload.user));
+            state.authStatus = "success"
+        },
+        [editUser.rejected]: (state) => {
+            state.authStatus = "failed"
         },
     }
 })

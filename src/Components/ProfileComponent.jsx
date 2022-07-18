@@ -31,7 +31,7 @@ export default function ProfileComponent({ userData }) {
 
             <div className="profile-name-div">
 
-                <p className="profile-name">{userData.firstName + userData.lastName}</p>
+                <p className="profile-name">{userData.firstName + " " + userData.lastName}</p>
 
                 <p className="profile-username">@{userData.username}</p>
 

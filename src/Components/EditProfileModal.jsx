@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from 'react-redux';
 import { closeEditProfileModal } from '../Redux/slices/modalSlice';
+import {useEffect} from "react";
+import { editUser } from '../utils/userHandler';
 
 export default function EditProfileModal() {
 
@@ -26,7 +28,9 @@ export default function EditProfileModal() {
             lastName: Yup.string().required("Last Name cannot be empty")
         }),
         onSubmit: (values, actions) => {
-            console.log(values);
+            dispatch(closeEditProfileModal());
+            const { firstName, lastName, portfolioUrl, bio } = values;   
+            dispatch(editUser({firstName, lastName, portfolioUrl, bio}));
             actions.resetForm();
         },
     },
