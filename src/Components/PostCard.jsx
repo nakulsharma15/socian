@@ -1,32 +1,46 @@
 import "./Styles/PostCard.css";
 import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getTimeDifference } from "../utils/utilFunctions";
 
-export default function PostCard() {
+export default function PostCard({ post }) {
+
+    const likeCount = post?.likes?.likeCount || 0;
+    const likedByList = post?.likes?.likedBy || [];
+    const { userData } = useSelector((store) => store.auth);
+    const { userList } = useSelector((store) => store.users);
+    const currentUser = userData.username;
+    const dispatch = useDispatch();
+
+    const findPostCreator = (name) => {
+        const user = userList?.find((user) => user.username === name);
+        return user;
+    };
+
+
     return (
         <div className='postcard-div'>
 
             <div className="postcard-header">
 
                 <div className="suggested-user-img">
-                    <img src="https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877" alt="pp-logo" />
+                    <img src={findPostCreator(post?.username)?.profileImg} alt={post?.username} />
                 </div>
 
                 <div>
                     <div className="postcard-info-div">
-                        <p className="postcard-info-name">Nakul Sharma</p>
-                        <p className="postcard-info-username">@nakulsharma15</p>
+                        <p className="postcard-info-name">{findPostCreator(post?.username)?.firstName + " " + findPostCreator(post?.username)?.lastName}</p>
+                        <p className="postcard-info-username">@{post?.username}</p>
                     </div>
 
-                    <p className="postcard-info-timestamp">50min ago</p>
+                    <p className="postcard-info-timestamp">{getTimeDifference(post?.createdAt)}</p>
                 </div>
 
             </div>
 
             <div className="postcard-content">
 
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam qui, voluptas accusamus libero assumenda fugiat quos consequatur! Magni cumque impedit, in repudiandae veniam id libero beatae iusto obcaecati nam. Velit.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid vel optio quo quas quidem sequi sapiente veniam suscipit accusamus quia ea sunt dolores harum, doloribus provident explicabo ullam tenetur delectus?
-                </p>
+                <p>{post?.content}</p>
 
             </div>
 
@@ -34,7 +48,7 @@ export default function PostCard() {
             <div className="postcard-action-div">
                 <div className="postcard-action">
                     <span className="material-icons-outlined">favorite_border</span>
-                    <p>10</p>
+                    <p>{likeCount}</p>
                 </div>
 
                 <div className="postcard-action">
@@ -46,13 +60,18 @@ export default function PostCard() {
                     <span className="material-icons-outlined">bookmark_border</span>
                 </div>
 
-                <div className="postcard-action">
-                    <span className="material-icons-outlined">edit</span>
-                </div>
+                {post?.username === currentUser.username ?
+                    <div className="postcard-action">
+                        <span className="material-icons-outlined">edit</span>
+                    </div>
+                    : null}
 
-                <div className="postcard-action">
-                    <span className="material-icons-outlined">delete</span>
-                </div>
+
+                {post?.username === currentUser.username ?
+                    <div className="postcard-action">
+                        <span className="material-icons-outlined">delete</span>
+                    </div>
+                    : null}
 
             </div>
         </div>

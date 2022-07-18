@@ -14,8 +14,8 @@ export default function LoginForm() {
     const { authToken } = useSelector((state) => state.auth);
 
     const testCredentials = {
-        username: "nakulsharma15",
-        password: "Nakul@123"
+        username: "coldpigli",
+        password: "Piyush@123"
     }
 
     const loginWithTest = () => {

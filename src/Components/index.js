@@ -4,6 +4,7 @@ import Header from "./Header";
 import { SuggestionBar } from "./SuggestionBar";
 import ProfileComponent from "./ProfileComponent";
 import PostCard from "./PostCard";
+import EditProfileModal from "./EditProfileModal";
 
 export {
     SideNav,
@@ -11,5 +12,6 @@ export {
     Header,
     SuggestionBar,
     ProfileComponent,
-    PostCard
+    PostCard,
+    EditProfileModal
 }

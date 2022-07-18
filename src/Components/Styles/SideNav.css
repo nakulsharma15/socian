@@ -13,8 +13,9 @@
 
 .menu-item {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
-    padding: 1rem;
+    padding: 1.2rem 1rem;
 }
 
 
