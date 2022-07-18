@@ -1,7 +1,11 @@
 import "./Styles/ProfileComponent.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { openEditProfileModal } from "../Redux/slices/modalSlice";
 
 export default function ProfileComponent({ userData }) {
+
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -20,10 +24,8 @@ export default function ProfileComponent({ userData }) {
                 </div>
             </div>
 
-
-
             <div className="edit-profile-btn-div">
-                <button className='suggest-follow-btn edit-profile-btn'>Edit Profile</button>
+                <button className='suggest-follow-btn edit-profile-btn' onClick={() => dispatch(openEditProfileModal())}>Edit Profile</button>
             </div>
 
 

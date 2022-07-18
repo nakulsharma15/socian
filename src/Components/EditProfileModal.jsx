@@ -2,11 +2,14 @@ import React from 'react';
 import "./Styles/EditProfileModal.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { closeEditProfileModal } from '../Redux/slices/modalSlice';
 
 export default function EditProfileModal() {
 
     const { userData } = useSelector((store) => store.auth);
+
+    const dispatch = useDispatch();
 
     const { firstName, lastName, profileImg, portfolioUrl, bio } = userData;
 
@@ -96,7 +99,7 @@ export default function EditProfileModal() {
 
                                         <button className="action-txt edit-profile-submit-btn" type="submit">Save</button>
 
-                                        <p className="action-txt close-modal-txt">Cancel</p>
+                                        <p className="action-txt close-modal-txt" onClick={() => dispatch(closeEditProfileModal())}>Cancel</p>
 
                                     </div>
                                 </div>

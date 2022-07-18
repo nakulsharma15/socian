@@ -11,6 +11,7 @@ export const Profile = () => {
   const { userData } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const { postList } = useSelector((store) => store.posts);
+  const {isEditProfileModalOpen} = useSelector((store) => store.modal);
   const relevantPosts = postList?.filter((post)=>post.username===userData.username);
 
   const checkIfAlreadyFollowed = (currentUsername) => {
@@ -39,7 +40,7 @@ export const Profile = () => {
 
     <div>
 
-      {/* <EditProfileModal /> */}
+      { isEditProfileModalOpen && <EditProfileModal /> }
 
       <Header />
       <div className="page-content">
