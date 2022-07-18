@@ -55,7 +55,6 @@ const authSlice = createSlice({
             state.authStatus = 'loading'
         },
         [editUser.fulfilled]: (state, action) => {
-            console.log('askdnaskld', action);
             state.userData = action.payload.user;
             localStorage.setItem("userData", JSON.stringify(action.payload.user));
             state.authStatus = "success"
