@@ -4,18 +4,33 @@ import { SideNav, Header, SuggestionBar, ProfileComponent, PostCard, EditProfile
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../utils/postHandler';
+import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
 
 export const Profile = () => {
 
   const [profileFollowData, setProfileFollowData] = useState([]);
-  const { userData } = useSelector((store) => store.auth);
+  const { userData, authToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
+  const {userList} = useSelector((store) => store.users)
   const { postList } = useSelector((store) => store.posts);
-  const {isEditProfileModalOpen} = useSelector((store) => store.modal);
-  const relevantPosts = postList?.filter((post)=>post.username===userData.username);
+  const { isEditProfileModalOpen } = useSelector((store) => store.modal);
+  const relevantPosts = postList?.filter((post) => post.username === userData.username);
 
   const checkIfAlreadyFollowed = (currentUsername) => {
-    return userData?.following.find((item) => item.username === currentUsername)
+    return userData?.following.find((user) => user.username === currentUsername)
+  }
+
+  const findUserId = (username) => {
+    const foundUser = userList.find((user)=>user.username===username);
+    return foundUser._id
+}
+
+  const UnfollowfollowHandler = (username) => {
+
+    checkIfAlreadyFollowed(username) ?
+      handleFollowUnfollow({ type: "unfollow", followUserId: findUserId(username) }, authToken, dispatch) :
+      handleFollowUnfollow({ type: "follow", followUserId: findUserId(username) }, authToken, dispatch)
+
   }
 
   useEffect(() => {
@@ -40,7 +55,7 @@ export const Profile = () => {
 
     <div>
 
-      { isEditProfileModalOpen && <EditProfileModal /> }
+      {isEditProfileModalOpen && <EditProfileModal />}
 
       <Header />
       <div className="page-content">
@@ -81,7 +96,7 @@ export const Profile = () => {
                 </div>
 
               </div>
-              <button className='suggest-follow-btn'>{checkIfAlreadyFollowed(user.username) ? "Unfollow" : "Follow"}</button>
+              <button className='suggest-follow-btn' onClick={() => UnfollowfollowHandler(user.username)}>{checkIfAlreadyFollowed(user.username) ? "Unfollow" : "Follow"}</button>
 
             </div>)
           }

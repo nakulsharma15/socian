@@ -4,11 +4,13 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from '../utils/userHandler';
+import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
 
 export const SuggestionBar = () => {
 
     const { userList } = useSelector((state) => state.users);
-    const { userData } = useSelector((state) => state.auth);
+    const { userData, authToken } = useSelector((state) => state.auth);
+
     const dispatch = useDispatch();
 
     const findSuggestions = () => {
@@ -22,6 +24,10 @@ export const SuggestionBar = () => {
         });
         return suggestionList;
     };
+
+    const followHandler = (userId) => {
+        handleFollowUnfollow({type:"follow", followUserId: userId},authToken,dispatch)
+    }
 
     useEffect(() => {
         dispatch(getAllUsers());
@@ -44,7 +50,7 @@ export const SuggestionBar = () => {
                     </div>
 
                 </div>
-                <button className='suggest-follow-btn'> Follow</button>
+                <button className='suggest-follow-btn' onClick={() => followHandler(user._id)}> Follow</button>
 
             </div>)}
 
