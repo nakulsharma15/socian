@@ -9,6 +9,7 @@ import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
 export const Profile = () => {
 
   const [profileFollowData, setProfileFollowData] = useState([]);
+  const [isPostFeed, setIsPostFeed] = useState(true);
   const { userData, authToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const { userList } = useSelector((store) => store.users)
@@ -41,14 +42,17 @@ export const Profile = () => {
 
   const profileFollowHandler = () => {
     setProfileFollowData(userData.followers);
+    setIsPostFeed(false);
   }
 
   const profileFollowingHandler = () => {
     setProfileFollowData(userData.following);
+    setIsPostFeed(false);
   }
 
   const profileFeedHandler = () => {
     setProfileFollowData([]);
+    setIsPostFeed(true);
   }
 
   return (
@@ -82,7 +86,7 @@ export const Profile = () => {
 
           </div>
 
-          {profileFollowData.length === 0 ? (relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)) :
+          {isPostFeed ? (relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)) :
 
             profileFollowData?.map((user) => <div className='suggestion-div' key={user.username}>
               <div className="suggested-user-div flex-align-center">
