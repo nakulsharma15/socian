@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Styles/Styles.css";
-import { SideNav, CreatePost, Header, SuggestionBar, PostCard } from '../Components/index';
+import { SideNav, CreatePost, Header, SuggestionBar, PostCard, EditPostModal } from '../Components/index';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from '../utils/postHandler';
 import { useEffect } from 'react';
@@ -27,6 +27,7 @@ export const Home = () => {
 
   return (
     <div>
+      <EditPostModal />
       <Header />
       <div className="page-content">
 

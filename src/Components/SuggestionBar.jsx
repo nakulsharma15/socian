@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from '../utils/userHandler';
 import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
 
-export const SuggestionBar = () => {
+const SuggestionBar = () => {
 
     const { userList } = useSelector((state) => state.users);
     const { userData, authToken } = useSelector((state) => state.auth);
@@ -58,3 +58,5 @@ export const SuggestionBar = () => {
         </div>
     )
 }
+
+export default SuggestionBar;
