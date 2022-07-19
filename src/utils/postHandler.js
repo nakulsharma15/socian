@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-hot-toast";
+import toastStyle from "./toastStyle";
 
 const getAllPosts = createAsyncThunk("posts/getAllPosts",
 async ()=>{
@@ -51,6 +53,7 @@ async(postData, {getState, rejectWithValue})=>{
     try{
         const {authToken} = getState().auth;
         const res = await axios.post(`/api/users/${postData.type}/${postData._id}`,{},{headers: {authorization: authToken}});
+        console.log("Bookmarked")
         return res.data;
     } catch(err){
         console.log(err);
@@ -63,6 +66,7 @@ async(postData, {getState, rejectWithValue})=>{
     try{
         const {authToken} = getState().auth;
         const res = await axios.post(`/api/posts/edit/${postData._id}`, {postData}, {headers: {authorization: authToken}});
+        toast.success("Post updated successfully", { style: toastStyle });
         return res.data;
     } catch(err){
         console.log(err);

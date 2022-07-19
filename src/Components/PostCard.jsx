@@ -2,6 +2,9 @@ import "./Styles/PostCard.css";
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getTimeDifference } from "../utils/utilFunctions";
+import { deletePost, likeOrDislikePost, bookmarkHandler } from "../utils/postHandler";
+import { checkUserInteraction, checkIfBookmarked } from "../utils/utilFunctions";
+import { openEditPostModal } from "../Redux/slices/modalSlice";
 
 export default function PostCard({ post }) {
 
@@ -9,7 +12,6 @@ export default function PostCard({ post }) {
     const likedByList = post?.likes?.likedBy || [];
     const { userData } = useSelector((store) => store.auth);
     const { userList } = useSelector((store) => store.users);
-    const currentUser = userData.username;
     const dispatch = useDispatch();
 
     const findPostCreator = (name) => {
@@ -17,6 +19,20 @@ export default function PostCard({ post }) {
         return user;
     };
 
+    const likeHandler = () => {
+        checkUserInteraction(likedByList, userData.username)
+            ? dispatch(likeOrDislikePost({ type: "dislike", _id: post?._id }))
+            : dispatch(likeOrDislikePost({ type: "like", _id: post?._id }));
+
+    }
+
+    const handleBookmark = () => {
+
+        checkIfBookmarked(userData?.bookmarks, post)
+            ? dispatch(bookmarkHandler({ type: "remove-bookmark", _id: post?._id }))
+            : dispatch(bookmarkHandler({ type: "bookmark", _id: post?._id }));
+
+    }
 
     return (
         <div className='postcard-div'>
@@ -46,9 +62,12 @@ export default function PostCard({ post }) {
 
 
             <div className="postcard-action-div">
-                <div className="postcard-action">
-                    <span className="material-icons-outlined">favorite_border</span>
-                    <p>{likeCount}</p>
+                <div className="postcard-action" onClick={likeHandler}>
+
+                    {checkUserInteraction(likedByList, userData.username) ? <span className="material-icons-outlined liked">favorite</span> : <span className="material-icons-outlined">favorite_border</span>}
+
+                    <p className={checkUserInteraction(likedByList, userData.username) ? "liked" : ""}>{likeCount}</p>
+
                 </div>
 
                 <div className="postcard-action">
@@ -56,20 +75,20 @@ export default function PostCard({ post }) {
                     <p>5</p>
                 </div>
 
-                <div className="postcard-action">
-                    <span className="material-icons-outlined">bookmark_border</span>
+                <div className="postcard-action" onClick={handleBookmark}>
+                {checkIfBookmarked(userData?.bookmarks, post) ? <span className="material-icons-outlined bookmarked">bookmark</span> : <span className="material-icons-outlined">bookmark_border</span>}
                 </div>
 
-                {post?.username === currentUser.username ?
-                    <div className="postcard-action">
+                {post?.username === userData.username ?
+                    <div className="postcard-action" onClick={() => dispatch(openEditPostModal({post}))}>
                         <span className="material-icons-outlined">edit</span>
                     </div>
                     : null}
 
 
-                {post?.username === currentUser.username ?
+                {post?.username === userData.username ?
                     <div className="postcard-action">
-                        <span className="material-icons-outlined">delete</span>
+                        <span className="material-icons-outlined" onClick={() => dispatch(deletePost(post))}>delete</span>
                     </div>
                     : null}
 

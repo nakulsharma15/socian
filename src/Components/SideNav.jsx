@@ -2,7 +2,7 @@ import React from 'react';
 import "./Styles/SideNav.css";
 import { NavLink } from "react-router-dom";
 
-export const SideNav = () => {
+const SideNav = () => {
     return (
         <div className="sidenav-menu">
 
@@ -29,3 +29,5 @@ export const SideNav = () => {
         </div>
     )
 }
+
+export default SideNav;

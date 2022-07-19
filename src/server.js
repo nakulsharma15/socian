@@ -115,7 +115,7 @@ export function makeServer({ environment = "development" } = {}) {
 			);
 			this.passthrough();
 			this.passthrough(
-				"https://api.cloudinary.com/v1_1/coldpigli/image/upload",
+				"https://api.cloudinary.com/v1_1/nakulsharma15/image/upload",
 				["post"]
 			);
 			this.passthrough();

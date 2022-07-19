@@ -81,12 +81,31 @@
 }
 
 .modal-actions {
-    /* border: 1px solid blue; */
     width: 100%;
     padding: 2rem;
     border-radius: 0.25rem;
     padding-top: 1rem;
 }
+
+.edit-profile-img-div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.edit-profile-logo-img {
+    max-width: 5rem;
+    margin: 1rem 0rem;
+}
+
+.edit-profile-logo-img img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    border-radius: 50%;
+}
+
 
 .actions-container {
     display: flex;

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser,signupUser } from "../../utils/handleAuth";
+import { loginUser, signupUser } from "../../utils/handleAuth";
+import { editUser } from "../../utils/userHandler";
+import { bookmarkHandler } from "../../utils/postHandler";
 
 const initialState = {
     authToken: "" || JSON.parse(localStorage.getItem("authToken")),
@@ -17,7 +19,7 @@ const authSlice = createSlice({
             localStorage.removeItem("userToken");
         },
         updateUser: (state, action) => {
-            console.log("updating user with", action.payload)
+            console.log("updating the user with the data:", action.payload)
             state.userData = action.payload
         }
 
@@ -49,6 +51,26 @@ const authSlice = createSlice({
         [loginUser.rejected]: (state) => {
             console.log("Error Occured")
             state.authStatus = 'failed'
+        },
+        [editUser.pending]: (state) => {
+            state.authStatus = 'loading'
+        },
+        [editUser.fulfilled]: (state, action) => {
+            state.userData = action.payload.user;
+            localStorage.setItem("userData", JSON.stringify(action.payload.user));
+            state.authStatus = "success"
+        },
+        [editUser.rejected]: (state) => {
+            state.authStatus = "failed"
+        },
+        [bookmarkHandler.pending]: (state) => {
+            state.authStatus = "loading"
+        },
+        [bookmarkHandler.fulfilled]: (state, action) => {
+            state.userData.bookmarks = action.payload.bookmarks
+        },
+        [bookmarkHandler.rejected]: (state) => {
+            state.authStatus = "failed"
         },
     }
 })
