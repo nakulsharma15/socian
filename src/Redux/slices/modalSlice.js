@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isEditProfileModalOpen: false,
+    isEditPostModalOpen: false,
+    postToBeEdited:{}
 };
 
 const modalSlice = createSlice({
@@ -14,9 +16,17 @@ const modalSlice = createSlice({
         closeEditProfileModal: (state) => {
             state.isEditProfileModalOpen = false;
         },
+        openEditPostModal: (state,action) => {
+            state.isEditPostModalOpen = true;
+            state.postToBeEdited = action.payload
+        },
+        closeEditPostModal: (state) => {
+            state.isEditPostModalOpen = false;
+            state.postToBeEdited = {}
+        },
     },
 });
 
-export const { openEditProfileModal, closeEditProfileModal } = modalSlice.actions;
+export const { openEditProfileModal, closeEditProfileModal, openEditPostModal, closeEditPostModal } = modalSlice.actions;
 
 export const modalReducer = modalSlice.reducer;

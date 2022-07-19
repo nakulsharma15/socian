@@ -11,7 +11,7 @@ export const Profile = () => {
   const [profileFollowData, setProfileFollowData] = useState([]);
   const { userData, authToken } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-  const {userList} = useSelector((store) => store.users)
+  const { userList } = useSelector((store) => store.users)
   const { postList } = useSelector((store) => store.posts);
   const { isEditProfileModalOpen } = useSelector((store) => store.modal);
   const relevantPosts = postList?.filter((post) => post.username === userData.username);
@@ -21,9 +21,9 @@ export const Profile = () => {
   }
 
   const findUserId = (username) => {
-    const foundUser = userList.find((user)=>user.username===username);
+    const foundUser = userList.find((user) => user.username === username);
     return foundUser._id
-}
+  }
 
   const UnfollowfollowHandler = (username) => {
 

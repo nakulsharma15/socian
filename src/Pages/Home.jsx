@@ -10,7 +10,8 @@ export const Home = () => {
 
   const dispatch = useDispatch();
   const { postList } = useSelector((store) => store.posts);
-  const {userData} = useSelector((store) => store.auth)
+  const {userData} = useSelector((store) => store.auth);
+  const { isEditPostModalOpen } = useSelector((store) => store.modal);
 
   const relevantPosts = postList?.filter((post) => {
     const temp = userData.following.find((follower) => follower.username === post.username);
@@ -27,7 +28,7 @@ export const Home = () => {
 
   return (
     <div>
-      <EditPostModal />
+      {isEditPostModalOpen && <EditPostModal />}
       <Header />
       <div className="page-content">
 

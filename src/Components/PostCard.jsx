@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTimeDifference } from "../utils/utilFunctions";
 import { deletePost, likeOrDislikePost, bookmarkHandler } from "../utils/postHandler";
 import { checkUserInteraction, checkIfBookmarked } from "../utils/utilFunctions";
+import { openEditPostModal } from "../Redux/slices/modalSlice";
 
 export default function PostCard({ post }) {
 
@@ -79,7 +80,7 @@ export default function PostCard({ post }) {
                 </div>
 
                 {post?.username === userData.username ?
-                    <div className="postcard-action">
+                    <div className="postcard-action" onClick={() => dispatch(openEditPostModal({post}))}>
                         <span className="material-icons-outlined">edit</span>
                     </div>
                     : null}
