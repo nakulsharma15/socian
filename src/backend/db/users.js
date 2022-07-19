@@ -46,7 +46,16 @@ export const users = [
           "https://ik.imagekit.io/avavya/Sonder/Krituraj_lm1sEBG1XK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729559",
       },
     ],
-    followers: [{
+    followers: [
+      {
+        firstName: "Nakul",
+        lastName: "Sharma",
+        username: "bhratashree",
+        email: "nakul@gmail.com",
+        profileImg:
+          "https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877",
+      },
+      {
       firstName: "Sreejith",
       lastName: "K",
       username: "sreejithk",
@@ -189,7 +198,15 @@ export const users = [
     bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    following: [],
+    following: [
+      {
+        firstName: "Piyush",
+        lastName: "Das",
+        username: "coldpigli",
+        email: "piyushdas98@gmail.com",
+        profileImg: "https://ik.imagekit.io/avavya/Sonder/piyush_eating_q6saDRQSv.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1654362769580",
+      }
+    ],
     followers: [
       {
         firstName: "Piyush",
