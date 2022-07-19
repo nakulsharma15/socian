@@ -6,6 +6,7 @@ import { BookmarksPage } from "./BookmarksPage";
 import Explore from "./Explore";
 import MockMan from "./Mockman";
 import SinglePostPage from "./SinglePostPage";
+import {UsersProfile} from "./UsersProfile";
 
 export {
     Home,
@@ -15,5 +16,6 @@ export {
     BookmarksPage,
     MockMan,
     Explore,
-    SinglePostPage
+    SinglePostPage,
+    UsersProfile
 };

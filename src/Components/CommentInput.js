@@ -19,7 +19,6 @@ export default function CommentInput({ post }) {
         }),
         onSubmit: (values, actions) => {
             const { reply } = values;
-            console.log(values);
             dispatch(addNewCommentToPost({ postId: post._id, comment: { text: reply } }));
             actions.resetForm();
         },

@@ -64,7 +64,7 @@ export const Profile = () => {
 
         <div className="main-content">
 
-          <ProfileComponent userData={userData} />
+          <ProfileComponent userInfo={userData} />
 
           <div className="profile-navigation-div">
 

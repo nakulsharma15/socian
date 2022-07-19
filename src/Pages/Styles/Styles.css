@@ -105,6 +105,10 @@
     font-size: 1.1rem;
 }
 
+.other-user-line-div {
+    margin: 1rem 0rem;
+}
+
 .profile-navigation-div {
     margin-top: 1rem;
     display: flex;

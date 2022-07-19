@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Styles/SuggestionBar.css";
-import { NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from '../utils/userHandler';
@@ -10,6 +10,7 @@ const SuggestionBar = () => {
 
     const { userList } = useSelector((state) => state.users);
     const { userData, authToken } = useSelector((state) => state.auth);
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const SuggestionBar = () => {
 
             <h2 className='suggestion-heading'>Suggested for you</h2>
 
-            {findSuggestions()?.map((user) => <div className='suggestion-div' key={user._id}>
+            {findSuggestions()?.map((user) => <Link to={`/profile/${user.username}`} className='suggestion-div' key={user._id} >
                 <div className="suggested-user-div flex-align-center">
 
                     <div className="suggested-user-img">
@@ -52,7 +53,7 @@ const SuggestionBar = () => {
                 </div>
                 <button className='suggest-follow-btn' onClick={() => followHandler(user._id)}> Follow</button>
 
-            </div>)}
+            </Link>)}
 
 
         </div>
