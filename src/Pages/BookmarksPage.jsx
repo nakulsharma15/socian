@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Styles/Styles.css";
 import { SideNav, Header, SuggestionBar, PostCard, EditPostModal } from '../Components/index';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 export const BookmarksPage = () => {
