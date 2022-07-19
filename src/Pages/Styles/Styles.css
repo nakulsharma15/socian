@@ -46,6 +46,35 @@
     height: auto;
 }
 
+.home-feed-sort-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.newest-first-class {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.older-first-class {
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-active {
+    background-color: var(--aside-bg-color);
+}
+
+
+.home-feed-sort-div-component {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 0.8rem 0rem;
+    border: 1px solid var(--line-color);
+    font-size: 1.1rem;
+}
 
 .profile-navigation-div {
     margin-top: 1rem;
@@ -64,6 +93,11 @@
 }
 
 .profile-navigation-menu:hover {
+    background-color: var(--aside-bg-color);
+    cursor: pointer;
+}
+
+.home-feed-sort-div-component:hover {
     background-color: var(--aside-bg-color);
     cursor: pointer;
 }
