@@ -31,7 +31,7 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "tahirahmed",
+        username: "ttahm3d",
         text: "It's my time to sleep!",
         votes: {
           upvotedBy: [],

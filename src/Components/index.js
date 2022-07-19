@@ -6,6 +6,8 @@ import ProfileComponent from "./ProfileComponent";
 import PostCard from "./PostCard";
 import EditProfileModal from "./EditProfileModal";
 import EditPostModal from "./EditPostModal";
+import CommentCard from "./CommentCard";
+import CommentInput from "./CommentInput";
 
 export {
     SideNav,
@@ -15,5 +17,7 @@ export {
     ProfileComponent,
     PostCard,
     EditProfileModal,
-    EditPostModal
+    EditPostModal,
+    CommentCard,
+    CommentInput
 }

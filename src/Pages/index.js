@@ -5,6 +5,7 @@ import { Signup } from "./Signup";
 import { BookmarksPage } from "./BookmarksPage";
 import Explore from "./Explore";
 import MockMan from "./Mockman";
+import SinglePostPage from "./SinglePostPage";
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     Signup,
     BookmarksPage,
     MockMan,
-    Explore
+    Explore,
+    SinglePostPage
 };
