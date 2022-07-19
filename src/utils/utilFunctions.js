@@ -33,3 +33,12 @@ export const getTimeDifference = (postDate) => {
 		return `${sec}s ago`;
 	}
 };
+
+export const checkUserInteraction = (arr, currentUsername) => {
+	return arr?.find((user) => user.username === currentUsername)
+};
+
+
+export const checkIfBookmarked = (bookmarks, post) => {
+	return bookmarks.find((postId) => postId === post?._id);
+} 

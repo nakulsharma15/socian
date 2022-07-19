@@ -29,6 +29,14 @@
     font-weight: bold;
 }
 
+.liked {
+    color: var(--red-500);
+}
+
+.bookmarked {
+    color: var(--blue-500);
+}
+
 .postcard-info-username {
     color: var(--username-color);
 }

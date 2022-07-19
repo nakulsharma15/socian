@@ -51,6 +51,7 @@ async(postData, {getState, rejectWithValue})=>{
     try{
         const {authToken} = getState().auth;
         const res = await axios.post(`/api/users/${postData.type}/${postData._id}`,{},{headers: {authorization: authToken}});
+        console.log("Bookmarked")
         return res.data;
     } catch(err){
         console.log(err);

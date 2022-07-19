@@ -2,7 +2,8 @@ import "./Styles/PostCard.css";
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getTimeDifference } from "../utils/utilFunctions";
-import { deletePost } from "../utils/postHandler";
+import { deletePost, likeOrDislikePost, bookmarkHandler } from "../utils/postHandler";
+import { checkUserInteraction, checkIfBookmarked } from "../utils/utilFunctions";
 
 export default function PostCard({ post }) {
 
@@ -16,6 +17,21 @@ export default function PostCard({ post }) {
         const user = userList?.find((user) => user.username === name);
         return user;
     };
+
+    const likeHandler = () => {
+        checkUserInteraction(likedByList, userData.username)
+            ? dispatch(likeOrDislikePost({ type: "dislike", _id: post?._id }))
+            : dispatch(likeOrDislikePost({ type: "like", _id: post?._id }));
+
+    }
+
+    const handleBookmark = () => {
+
+        checkIfBookmarked(userData?.bookmarks, post)
+            ? dispatch(bookmarkHandler({ type: "remove-bookmark", _id: post?._id }))
+            : dispatch(bookmarkHandler({ type: "bookmark", _id: post?._id }));
+
+    }
 
     return (
         <div className='postcard-div'>
@@ -45,9 +61,12 @@ export default function PostCard({ post }) {
 
 
             <div className="postcard-action-div">
-                <div className="postcard-action">
-                    <span className="material-icons-outlined">favorite_border</span>
-                    <p>{likeCount}</p>
+                <div className="postcard-action" onClick={likeHandler}>
+
+                    {checkUserInteraction(likedByList, userData.username) ? <span className="material-icons-outlined liked">favorite</span> : <span className="material-icons-outlined">favorite_border</span>}
+
+                    <p className={checkUserInteraction(likedByList, userData.username) ? "liked" : ""}>{likeCount}</p>
+
                 </div>
 
                 <div className="postcard-action">
@@ -55,8 +74,8 @@ export default function PostCard({ post }) {
                     <p>5</p>
                 </div>
 
-                <div className="postcard-action">
-                    <span className="material-icons-outlined">bookmark_border</span>
+                <div className="postcard-action" onClick={handleBookmark}>
+                {checkIfBookmarked(userData?.bookmarks, post) ? <span className="material-icons-outlined bookmarked">bookmark</span> : <span className="material-icons-outlined">bookmark_border</span>}
                 </div>
 
                 {post?.username === userData.username ?
