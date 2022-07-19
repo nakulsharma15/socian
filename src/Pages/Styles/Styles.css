@@ -135,6 +135,24 @@
     cursor: pointer;
 }
 
+.no-match-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    gap: 1rem;
+}
+
+.no-match-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.no-match-content p {
+    color: var(--tick-color);
+}
+
 
 @media only screen and (max-width: 1100px) {
 

@@ -7,6 +7,7 @@ import Explore from "./Explore";
 import MockMan from "./Mockman";
 import SinglePostPage from "./SinglePostPage";
 import {UsersProfile} from "./UsersProfile";
+import NoMatch from "./NoMatch";
 
 export {
     Home,
@@ -17,5 +18,6 @@ export {
     MockMan,
     Explore,
     SinglePostPage,
-    UsersProfile
+    UsersProfile,
+    NoMatch
 };

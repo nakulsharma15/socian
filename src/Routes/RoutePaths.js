@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "../utils/RequiresAuth";
-import { Home, Profile, Login, Signup, BookmarksPage, Explore, MockMan, SinglePostPage, UsersProfile } from "../Pages/index";
+import { Home, Profile, Login, Signup, BookmarksPage, Explore, MockMan, SinglePostPage, UsersProfile, NoMatch } from "../Pages/index";
 
 function RoutePaths() {
 
@@ -13,6 +13,7 @@ function RoutePaths() {
         <Route path="/post/:id" element={<RequireAuth><SinglePostPage /></RequireAuth>}/>
         <Route path="/bookmarks" element={<RequireAuth><BookmarksPage /></RequireAuth>} />
         <Route path="/explore" element={<RequireAuth><Explore /></RequireAuth>} />
+        <Route path="*" element={<NoMatch />} />
         <Route path="/mockman" element={<MockMan />} />
     </Routes>
 }
