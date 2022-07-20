@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <a href="https://socian.vercel.app/">
+   Socian.
+  </a>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+     Socian is a text first social media app which focuses more on written textual content rather than media. Our short attention span has reduced our reading time.        But Socian allows to to spend more time reading the thoughts of your friends. 
+  <br>
+  <a href="https://socian.vercel.app/"><strong>Explore Socian</strong></a>
+  <br>
+  <br>
+  <a href="https://github.com/nakulsharma15/socian">Suggestions / Bug</a>
+  </p>
 
-## Available Scripts
+## Test Credentials -
 
-In the project directory, you can run:
+- Are provided on the Login page. The user can simply login as guest and go through the flow of the app.
 
-### `yarn start`
+## Technologies Used -
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. ReactJS, Redux-Toolkit
+2. Altur-UI for styling
+3. React Router
+4. JWT for authentication
+5. Vercel for hosting the website.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Use the app:
+<p><a href="https://socian.vercel.app/">
+   Socian.
+  </a></p>
 
-### `yarn test`
+## How to Install and Run the Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Instructions for running this code to your local system.
 
-### `yarn build`
+Open your terminal and copy below code line.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/nakulsharma15/socian.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+After coping link, paste into terminal and hit enter.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then run below command . that command install all package that need to run this project.
 
-### `yarn eject`
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+After runing npm command, you need to create a .env file in the root directory.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+and save below value into .env file
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+REACT_APP_JWT_SECRET=HERE_YOUR_ANY_STRING_TYPE_FOR_ENCODE
+```
+You will also need an upload_preset from cloudinary for image uploading feature. You can create a free account on cloudinary and generate an upload_preset and set it up in your .env file too.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Now enter below command to run your project.
 
-## Learn More
+```
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Creator
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Nakul Sharma**
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <https://twitter.com/NakulSharma_15>
+- <https://github.com/nakulsharma15>
