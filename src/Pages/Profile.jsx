@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../utils/postHandler';
 import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
+import { Link } from 'react-router-dom';
 
 export const Profile = () => {
 
@@ -97,10 +98,10 @@ export const Profile = () => {
                   <div className="suggested-user-img">
                     <img src={user.profileImg} alt={user.username} />
                   </div>
-                  <div className='suggested-user-info-div'>
+                  <Link to={`/profile/${user.username}`} className='suggested-user-info-div'>
                     <p className='suggested-user-name'>{user.firstName + " " + user.lastName}</p>
                     <p className="suggested-user-username">@{user.username}</p>
-                  </div>
+                  </Link>
 
                 </div>
                 <button className='suggest-follow-btn' onClick={() => UnfollowfollowHandler(user.username)}>{checkIfAlreadyFollowed(user.username) ? "Unfollow" : "Follow"}</button>
