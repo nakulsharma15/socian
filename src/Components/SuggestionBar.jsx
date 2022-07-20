@@ -39,21 +39,21 @@ const SuggestionBar = () => {
 
             <h2 className='suggestion-heading'>Suggested for you</h2>
 
-            {findSuggestions()?.map((user) => <Link to={`/profile/${user.username}`} className='suggestion-div' key={user._id} >
+            {findSuggestions()?.map((user) => <div className='suggestion-div' key={user._id} >
                 <div className="suggested-user-div flex-align-center">
 
                     <div className="suggested-user-img">
                         <img src={user.profileImg} alt={user.username} />
                     </div>
-                    <div className='suggested-user-info-div'>
+                    <Link to={`/profile/${user.username}`} className='suggested-user-info-div'>
                         <p className='suggested-user-name'>{user.firstName + " " + user.lastName}</p>
                         <p className="suggested-user-username">@{user.username}</p>
-                    </div>
+                    </Link>
 
                 </div>
                 <button className='suggest-follow-btn' onClick={() => followHandler(user._id)}> Follow</button>
 
-            </Link>)}
+            </div>)}
 
 
         </div>
