@@ -19,7 +19,7 @@ async (userData, {getState,rejectWithValue})=>{
 const getAllUsers = createAsyncThunk("users/allUsers",
 async ()=>{
     try{
-        const res = await axios.get('api/users');
+        const res = await axios.get('/api/users');
         return res.data;
     } catch(err){
         console.log(err);

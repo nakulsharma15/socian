@@ -31,7 +31,7 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "tahirahmed",
+        username: "ttahm3d",
         text: "It's my time to sleep!",
         votes: {
           upvotedBy: [],
@@ -271,13 +271,37 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "Hi, I'm Piyush, and welcome to Sonder. Sonder is a text first social media app which focuses more on written textual content rather than media. Our short attention span has reduced our reading time. But Sonder allows to to spend more time reading the thoughts of your friends. Sonder — noun. the realization that each random passerby is living a life as vivid and complex as your own — populated with their own ambitions, friends, routines, worries and inherited craziness — an epic story that continues invisibly around you like an anthill sprawling deep underground, with elaborate passageways to thousands of other lives that you'll never know existed, in which you might appear only once, as an extra sipping coffee in the background, as a blur of traffic passing on the highway, as a lighted window at dusk.",
+      "Hello Everyone",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "coldpigli",
+    comments: [
+      {
+        _id: uuid(),
+        username: "kritu",
+        text: "Hello",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content:
+      "Hi, I'm Nakul, and welcome to Socian. Socian is a text first social media app which focuses more on written textual content rather than media. Our short attention span has reduced our reading time. But Socian allows to spend more time reading the thoughts of your friends.",
     likes: {
       likeCount: 2,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "coldpigli",
+    username: "bhratashree",
     comments: [
       {
         _id: uuid(),

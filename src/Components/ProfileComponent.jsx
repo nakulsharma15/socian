@@ -2,10 +2,24 @@ import "./Styles/ProfileComponent.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { openEditProfileModal } from "../Redux/slices/modalSlice";
+import { handleFollowUnfollow } from "../utils/followUnfollowHandler";
 
-export default function ProfileComponent({ userData }) {
+export default function ProfileComponent({ userInfo }) {
 
     const dispatch = useDispatch();
+    const { userData, authToken } = useSelector((state) => state.auth);
+
+    const checkIfAlreadyFollowing = () => {
+        return userData?.following.find((user) => user.username === userInfo.username)
+    }
+
+
+    const followUnfollow = () => {
+        checkIfAlreadyFollowing() ?
+            handleFollowUnfollow({ type: "unfollow", followUserId: userInfo._id }, authToken, dispatch) :
+            handleFollowUnfollow({ type: "follow", followUserId: userInfo._id }, authToken, dispatch)
+    }
+
 
     return (
         <div>
@@ -20,28 +34,31 @@ export default function ProfileComponent({ userData }) {
                 </div>
 
                 <div className="profile-img">
-                    <img src={userData.profileImg} alt={userData.firstName} />
+                    <img src={userInfo.profileImg} alt={userInfo.firstName} />
                 </div>
             </div>
 
             <div className="edit-profile-btn-div">
-                <button className='suggest-follow-btn edit-profile-btn' onClick={() => dispatch(openEditProfileModal())}>Edit Profile</button>
+
+                {userInfo.username === userData.username ? <button className='suggest-follow-btn edit-profile-btn' onClick={() => dispatch(openEditProfileModal())}>Edit Profile</button> : <button className='suggest-follow-btn edit-profile-btn' onClick={followUnfollow}>  {
+                    checkIfAlreadyFollowing() ? "Unfollow" : "Follow"
+                }</button>}
             </div>
 
 
             <div className="profile-name-div">
 
-                <p className="profile-name">{userData.firstName + " " + userData.lastName}</p>
+                <p className="profile-name">{userInfo.firstName + " " + userInfo.lastName}</p>
 
-                <p className="profile-username">@{userData.username}</p>
+                <p className="profile-username">@{userInfo.username}</p>
 
             </div>
 
             <div className="profile-bio-div">
 
-                <p className="profile-bio">{userData.bio}</p>
+                <p className="profile-bio">{userInfo.bio}</p>
 
-                <Link to={userData.portfolioUrl} className="portfolio-url">{userData.portfolioUrl}</Link>
+                <Link to={userInfo.portfolioUrl} className="portfolio-url">{userInfo.portfolioUrl}</Link>
 
             </div>
 
@@ -49,14 +66,14 @@ export default function ProfileComponent({ userData }) {
 
                 <div className="profile-stat">
 
-                    <p className="profile-stat-num">{userData?.followers?.length}</p>
+                    <p className="profile-stat-num">{userInfo?.followers?.length}</p>
                     <p className="profile-stat-type">Followers</p>
 
                 </div>
 
                 <div className="profile-stat">
 
-                    <p className="profile-stat-num">{userData?.following?.length}</p>
+                    <p className="profile-stat-num">{userInfo?.following?.length}</p>
                     <p className="profile-stat-type">Following</p>
 
                 </div>

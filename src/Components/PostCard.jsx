@@ -5,9 +5,11 @@ import { getTimeDifference } from "../utils/utilFunctions";
 import { deletePost, likeOrDislikePost, bookmarkHandler } from "../utils/postHandler";
 import { checkUserInteraction, checkIfBookmarked } from "../utils/utilFunctions";
 import { openEditPostModal } from "../Redux/slices/modalSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({ post }) {
 
+    const navigate = useNavigate();
     const likeCount = post?.likes?.likeCount || 0;
     const likedByList = post?.likes?.likedBy || [];
     const { userData } = useSelector((store) => store.auth);
@@ -70,17 +72,19 @@ export default function PostCard({ post }) {
 
                 </div>
 
-                <div className="postcard-action">
+                <div className="postcard-action" onClick={() => {
+                    navigate(`/post/${post?._id}`)
+                }}>
                     <span className="material-icons-outlined">chat_bubble_outline</span>
-                    <p>5</p>
+                    <p>{post?.comments?.length}</p>
                 </div>
 
                 <div className="postcard-action" onClick={handleBookmark}>
-                {checkIfBookmarked(userData?.bookmarks, post) ? <span className="material-icons-outlined bookmarked">bookmark</span> : <span className="material-icons-outlined">bookmark_border</span>}
+                    {checkIfBookmarked(userData?.bookmarks, post) ? <span className="material-icons-outlined bookmarked">bookmark</span> : <span className="material-icons-outlined">bookmark_border</span>}
                 </div>
 
                 {post?.username === userData.username ?
-                    <div className="postcard-action" onClick={() => dispatch(openEditPostModal({post}))}>
+                    <div className="postcard-action" onClick={() => dispatch(openEditPostModal({ post }))}>
                         <span className="material-icons-outlined">edit</span>
                     </div>
                     : null}
