@@ -7,7 +7,7 @@ import { getAllPosts } from '../utils/postHandler';
 import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
 import { Link } from 'react-router-dom';
 
-export const Profile = () => {
+const Profile = () => {
 
   const [profileFollowData, setProfileFollowData] = useState([]);
   const [isPostFeed, setIsPostFeed] = useState(true);
@@ -119,3 +119,5 @@ export const Profile = () => {
     </div>
   )
 }
+
+export default Profile;

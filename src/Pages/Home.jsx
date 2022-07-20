@@ -6,7 +6,7 @@ import { getAllPosts } from '../utils/postHandler';
 import { useState, useEffect } from 'react';
 import { getAllUsers } from '../utils/userHandler';
 
-export const Home = () => {
+const Home = () => {
 
   const dispatch = useDispatch();
   const [sortType, setSortType] = useState("Recent");
@@ -69,3 +69,5 @@ export const Home = () => {
     </div>
   )
 }
+
+export default Home;

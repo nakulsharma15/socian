@@ -4,7 +4,7 @@ import { SideNav, Header, SuggestionBar, PostCard, EditPostModal } from '../Comp
 import { useSelector } from "react-redux";
 
 
-export const BookmarksPage = () => {
+const BookmarksPage = () => {
 
   const { postList } = useSelector((store) => store.posts);
   const { userData } = useSelector((store) => store.auth);
@@ -61,3 +61,5 @@ export const BookmarksPage = () => {
     </div>
   )
 }
+
+export default BookmarksPage;

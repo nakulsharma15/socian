@@ -2,7 +2,7 @@ import React from 'react';
 import SignupForm from '../Components/SignupForm';
 import "./Styles/Styles.css";
 
-export const Signup = () => {
+const Signup = () => {
   return (
     <div>
       <div className='login-page-content-div'>
@@ -22,3 +22,5 @@ export const Signup = () => {
     </div>
   )
 }
+
+export default Signup;

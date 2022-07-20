@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from '../Components/LoginForm';
 import "./Styles/Styles.css";
 
-export const Login = () => {
+const Login = () => {
   return (
     <div>
       <div className='login-page-content-div'>
@@ -22,3 +22,5 @@ export const Login = () => {
     </div>
   )
 }
+
+export default Login;

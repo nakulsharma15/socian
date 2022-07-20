@@ -7,7 +7,7 @@ import { getAllPosts } from '../utils/postHandler';
 import { useParams } from "react-router-dom";
 import { getUser } from '../utils/userHandler';
 
-export const UsersProfile = () => {
+const UsersProfile = () => {
 
     const [shownUser, setShownUser] = useState();
     const { userData, authToken } = useSelector((store) => store.auth);
@@ -68,3 +68,5 @@ export const UsersProfile = () => {
         </div>
     )
 }
+
+export default UsersProfile;
