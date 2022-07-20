@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../utils/postHandler';
 import { handleFollowUnfollow } from '../utils/followUnfollowHandler';
+import { Link } from 'react-router-dom';
 
 export const Profile = () => {
 
@@ -86,25 +87,29 @@ export const Profile = () => {
 
           </div>
 
-          {isPostFeed ? (relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)) :
+          <div className='margin-bottom-class'>
 
-            profileFollowData?.map((user) => <div className='suggestion-div' key={user.username}>
-              <div className="suggested-user-div flex-align-center">
 
-                <div className="suggested-user-img">
-                  <img src={user.profileImg} alt={user.username} />
+            {isPostFeed ? (relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)) :
+
+              profileFollowData?.map((user) => <div className='suggestion-div' key={user.username}>
+                <div className="suggested-user-div flex-align-center">
+
+                  <div className="suggested-user-img">
+                    <img src={user.profileImg} alt={user.username} />
+                  </div>
+                  <Link to={`/profile/${user.username}`} className='suggested-user-info-div'>
+                    <p className='suggested-user-name'>{user.firstName + " " + user.lastName}</p>
+                    <p className="suggested-user-username">@{user.username}</p>
+                  </Link>
+
                 </div>
-                <div className='suggested-user-info-div'>
-                  <p className='suggested-user-name'>{user.firstName + " " + user.lastName}</p>
-                  <p className="suggested-user-username">@{user.username}</p>
-                </div>
+                <button className='suggest-follow-btn' onClick={() => UnfollowfollowHandler(user.username)}>{checkIfAlreadyFollowed(user.username) ? "Unfollow" : "Follow"}</button>
 
-              </div>
-              <button className='suggest-follow-btn' onClick={() => UnfollowfollowHandler(user.username)}>{checkIfAlreadyFollowed(user.username) ? "Unfollow" : "Follow"}</button>
+              </div>)
+            }
 
-            </div>)
-          }
-
+          </div>
         </div>
 
         <SuggestionBar />

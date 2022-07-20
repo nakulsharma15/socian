@@ -36,7 +36,7 @@ export const BookmarksPage = () => {
 
           </div>
 
-          <div>
+          <div className='margin-bottom-class'>
             {(userData?.bookmarks?.length === 0) ?
 
               <div className='empty-bookmark-list-div'>

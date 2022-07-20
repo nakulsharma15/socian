@@ -15,7 +15,7 @@ export const users = [
     password: "Piyush@123",
     profileImg:
       "https://ik.imagekit.io/avavya/Sonder/piyush_eating_q6saDRQSv.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1654362769580",
-    bio: "'Hooked' on react lately, flirting with Javascript simultaneously. Following NeoGcamp religiously. Loves dad jokes, music and quiet water bodies",
+    bio: "Hey Everyone",
     portfolioUrl: "https://peerlist.io/piyushdas",
     bookmarks: [],
     createdAt: formatDate(),
@@ -194,7 +194,7 @@ export const users = [
     profileImg:
       "https://ik.imagekit.io/avavya/Sonder/nakul_Rs-XDbGCQ.png?ik-sdk-version=javascript-1.4.3&updatedAt=1654451729877",
     bio: "I am pure and pious.",
-    portfolioUrl: "www.bhratashree.com",
+    portfolioUrl: "https://peerlist.io/nakulsharma",
     bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -205,7 +205,7 @@ export const users = [
         username: "coldpigli",
         email: "piyushdas98@gmail.com",
         profileImg: "https://ik.imagekit.io/avavya/Sonder/piyush_eating_q6saDRQSv.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1654362769580",
-      }
+      },
     ],
     followers: [
       {

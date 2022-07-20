@@ -42,7 +42,7 @@ export default function SinglePostPage() {
 
                     <CommentInput post={requiredPost} />
 
-                    <div className='newest-first-class'>
+                    <div className='newest-first-class margin-bottom-class'>
 
                         {comments?.map((comment) => <CommentCard key={comment.username} comment={comment} />)}
 

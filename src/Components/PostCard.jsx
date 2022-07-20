@@ -5,7 +5,7 @@ import { getTimeDifference } from "../utils/utilFunctions";
 import { deletePost, likeOrDislikePost, bookmarkHandler } from "../utils/postHandler";
 import { checkUserInteraction, checkIfBookmarked } from "../utils/utilFunctions";
 import { openEditPostModal } from "../Redux/slices/modalSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function PostCard({ post }) {
 
@@ -46,10 +46,10 @@ export default function PostCard({ post }) {
                 </div>
 
                 <div>
-                    <div className="postcard-info-div">
+                    <Link to={post?.username === userData.username ? `/profile` : `/profile/${post?.username}`} className="postcard-info-div">
                         <p className="postcard-info-name">{findPostCreator(post?.username)?.firstName + " " + findPostCreator(post?.username)?.lastName}</p>
                         <p className="postcard-info-username">@{post?.username}</p>
-                    </div>
+                    </Link>
 
                     <p className="postcard-info-timestamp">{getTimeDifference(post?.createdAt)}</p>
                 </div>

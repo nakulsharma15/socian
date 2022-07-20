@@ -11,7 +11,6 @@ export default function EditPostModal() {
     const dispatch = useDispatch();
 
     const { postToBeEdited } = useSelector((store) => store.modal);
-    // console.log(postToBeEdited.post.content);
 
     const formik = useFormik({
         initialValues: {

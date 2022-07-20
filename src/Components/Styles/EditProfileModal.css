@@ -126,3 +126,46 @@
 .close-modal-txt:hover {
     color: var(--red-600);
 }
+
+@media only screen and (max-width: 768px) {
+    .modal {
+        min-width: 35rem;
+        padding-right: 1rem;
+    }
+
+    .editpost-textarea { 
+        width: 35rem;
+    }
+
+    .edit-profile-div input {
+        width: 35rem;
+     }
+ }
+
+ @media only screen and (max-width: 600px) {
+    .modal {
+        min-width: 25rem;
+    }
+
+    .editpost-textarea { 
+        width: 25rem;
+    }
+
+    .edit-profile-div input {
+        width: 25rem;
+     }
+ }
+
+ @media only screen and (max-width: 450px) {
+    .modal {
+        min-width: 20rem;
+    }
+
+    .editpost-textarea { 
+        width: 20rem;
+    }
+
+    .edit-profile-div input {
+        width: 20rem;
+     }
+ }
