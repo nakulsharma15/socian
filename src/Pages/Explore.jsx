@@ -33,10 +33,13 @@ export default function Explore() {
           <div className='bookmark-heading-div'>
 
             <h2 className='home-heading bookmark-heading'>Explore</h2>
-             <p className='bookmark-sub-heading'>This is explore. Check out posts that are trending even from the people you don't follow</p>
+            <p className='bookmark-sub-heading'>This is explore. Check out posts that are trending even from the people you don't follow</p>
           </div>
 
-          {trendingPostList?.map((post) => <PostCard post={post} key={post._id} />)}
+          <div className='margin-bottom-class'>
+
+            {trendingPostList?.map((post) => <PostCard post={post} key={post._id} />)}
+          </div>
 
         </div>
 

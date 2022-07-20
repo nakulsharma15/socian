@@ -56,7 +56,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className={sortType === "Recent" ? "newest-first-class" : "older-first-class"}>
+          <div className={sortType === "Recent" ? "newest-first-class margin-bottom-class" : "older-first-class margin-bottom-class"}>
             {relevantPosts?.map((post) => <PostCard post={post} key={post._id} />)}
           </div>
 
