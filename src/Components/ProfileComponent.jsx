@@ -58,8 +58,7 @@ export default function ProfileComponent({ userInfo }) {
 
                 <p className="profile-bio">{userInfo.bio}</p>
 
-                <Link to={userInfo.portfolioUrl} className="portfolio-url">{userInfo.portfolioUrl}</Link>
-
+                <a className="portfolio-url" target="_blank" href={userInfo.portfolioUrl}>{userInfo.portfolioUrl}</a>
             </div>
 
             <div className="profile-stats-div">
